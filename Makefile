@@ -1,7 +1,3 @@
-all: term
-
-term: term.c
-	gcc -o term term.c
-
-clean:
-	rm term
+gcc -с src/*.c
+gcc -o output.o public/*.o
+./output.o

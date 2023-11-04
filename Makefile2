@@ -1,0 +1,87 @@
+ # Copyright 2023 valeryje
+ #
+ # This file contains Original Code created by Alexander Alexanyan
+ # aka valeryje or Valery Jennette or Alex-A-Nyan or alale5.
+ #
+ # The Original Code and all software developed in the process of
+ # participation on learning by experimental programming educational method.
+ # The whole methodology was developed and distributed by
+ # Autonomous non-profit organization «School 21» (ANO «School 21»). 
+ #
+ # Redistribution and use of this file, its parts, or entire project
+ # are permitted by confirmation of its original creator.
+
+
+# ====================================================================================================
+
+# ----- SHORT CUTS -----  #
+CC          = gcc
+CFLAGS      = -Wall -Werror -Wextra -std=c11 -pedantic -c -g
+FUNCTIONS   = new
+LIBS        = -lcheck -lm -lgcov 
+
+# ====================================================================================================
+
+# ----- TASK TARGETS ----- #
+all: clean s21_calc.a
+
+install:
+
+uninstall:
+
+build:
+
+clean:
+	@-rm *.o
+	@-rm s21_test.c test.info *.gc*
+	@-rm *.a
+	@-rm test.out
+	@-rm -rf report
+
+dvi:
+
+dist:
+
+test: 
+	@checkmk clean_mode=1 test.check > s21_test.c
+	clear
+	@$(CC) test.c s21_calc.a $(LIBS) -o test.out
+	@./test.out
+
+gcov_report: test
+	@rm -rf report
+	@for function in $(FUNCTIONS); do $(CC) -c $$function.c --coverage $(LIBS) -o $$function.o; done;
+	@$(CC) *.o test.c --coverage $(LIBS) -o test.out
+	@-./test.out
+	@lcov --directory . -c --output-file test.info
+	@genhtml *.info -o report
+	@-rm test.c test.info *.gc*
+	@sleep 1
+	@echo
+	@echo OPENING COVERAGE REPORT
+	@open report/index.html
+	@sleep 1
+	@clear
+
+# ----- SUPPORT TARGETS ----- #
+s21_calc.a: objects
+	@ar rc main.a ./*.o
+	@rm *.o
+
+objects: s21_calc.h
+	@for function in $(FUNCTIONS); do $(CC) $(CFLAGS) -c $$function.c -o $$function.o; done;
+
+s21_test: test.check
+	@checkmk clean_mode=1 test.check > s21_test.c
+
+style:
+	@clear
+	@clang-format -i *.c
+	@clang-format -n *.c
+	@sleep 0.1
+	@echo Clang settings were applied
+	@sleep 1
+	@clear
+	
+gcc:
+	clear && gcc -Wall -Werror -Wextra main.c -o main.o && ./main.o

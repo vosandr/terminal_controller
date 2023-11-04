@@ -1,45 +1,10 @@
-#include <string.h>
-#include <signal.h>
-#include <sys/ioctl.h>
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
-
+#include "includes.h"
 #include "term.h"
 
 /*ANSI/VT100 Terminal using example */
+#include "defines.h"
 
 
-#define home() 			printf(ESC "[H") //Move cursor to the indicated row, column (origin at 1,1)
-#define clrscr()		printf(ESC "[2J") //lear the screen, move to (1,1)
-#define gotoxy(x,y)		printf(ESC "[%d;%dH", y, x);
-#define visible_cursor() printf(ESC "[?251");
-/* 
-Set Display Attribute Mode	<ESC>[{attr1};...;{attrn}m
-*/
-#define resetcolor() printf(ESC "[0m")
-#define set_display_atrib(color) 	printf(ESC "[%dm",color)
-
-
-void frame_draw () {
-	home();
-	set_display_atrib(B_BLUE);
-//            123456789012345678901
-	puts(	"┌─────────┐┌─────────┐\n" //0
-			"│         ││         │\n" //1
-			"│         ││         │\n" //2
-			"│         ││         │\n" //3
-			"│         │├─────────┤\n" //4
-			"│         ││         │\n" //5
-			"│         ││         │\n" //6
-			"│         ││         │\n" //7
-			"│         ││         │\n" //8
-			"└─────────┘└─────────┘\n" //9
-			"┌────────────────────┐\n" //10
-			"│                    │\n" //11
-			"└────────────────────┘");  //12
-	resetcolor();
-}
 
 void print_port_bits (unsigned char port) {
 	int i;
