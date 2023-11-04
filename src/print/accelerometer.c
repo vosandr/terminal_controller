@@ -1,6 +1,7 @@
+#include "../h/term.h"
+#include "../h/defines.h"
 
-
-void print_accelerometer(float * a) {
+extern void print_accelerometer(float * a) {
 	int i;
 	const char * coordinate = "XYZ";
 	set_display_atrib(B_BLUE);

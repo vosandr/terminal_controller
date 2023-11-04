@@ -1,6 +1,6 @@
 #include "h/term.h"
 
-void frame_draw () {
+extern void frame_draw () {
 	home();
 	set_display_atrib(B_BLUE);
 //            123456789012345678901

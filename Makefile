@@ -1,3 +1,3 @@
 all: 
-	gcc src/*.c -o output.o
+	gcc src/**/*.c -o output.o
 	./output.o

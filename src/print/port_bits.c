@@ -1,3 +1,4 @@
+#include "../h/term.h"
 void print_port_bits(unsigned char port)
 {
     int i;

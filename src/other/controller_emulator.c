@@ -7,7 +7,7 @@ extern void print_port_bits (unsigned char port);
 extern void print_time_date (struct tm* tm_info);
 
 
-void controller_emulator () {
+extern void controller_emulator () {
 	unsigned char  port = 0x01;
 	int alarm_counter = 0;
 	time_t timer;

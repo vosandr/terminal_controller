@@ -1,3 +1,6 @@
+#include "../h/term.h"
+#include "../h/includes.h"
+#include "../h/defines.h"
 void print_time_date (struct tm* tm_info) {
 	char buffer[12];
 	set_display_atrib(BRIGHT);
