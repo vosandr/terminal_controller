@@ -1,5 +1,6 @@
-void print_port_bits (unsigned char port) {
-	int i;
+void print_port_bits(unsigned char port)
+{
+    int i;
 	unsigned char maxPow = 1<<(8-1);
 	set_display_atrib(B_BLUE);
 	set_display_atrib(BRIGHT);

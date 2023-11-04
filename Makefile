@@ -1,6 +1,3 @@
-all: main
-
-main: main.c
-	gcc -с src/*.c
-	gcc -o output.o public/*.o
+all: 
+	gcc src/*.c -o output.o
 	./output.o

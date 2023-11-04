@@ -1,3 +1,12 @@
+#include "h/includes.h"
+
+
+extern void print_alarm (int alarm_error);
+extern void print_accelerometer(float * a);
+extern void print_port_bits (unsigned char port);
+extern void print_time_date (struct tm* tm_info);
+
+
 void controller_emulator () {
 	unsigned char  port = 0x01;
 	int alarm_counter = 0;

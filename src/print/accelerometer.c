@@ -1,3 +1,5 @@
+
+
 void print_accelerometer(float * a) {
 	int i;
 	const char * coordinate = "XYZ";
