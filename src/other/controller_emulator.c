@@ -1,5 +1,5 @@
-#include "h/includes.h"
-
+#include "../h/includes.h"
+#include "../h/defines.h"
 
 extern void print_alarm (int alarm_error);
 extern void print_accelerometer(float * a);

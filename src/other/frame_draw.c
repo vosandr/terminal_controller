@@ -1,4 +1,4 @@
-#include "h/term.h"
+#include "../h/term.h"
 
 extern void frame_draw () {
 	home();

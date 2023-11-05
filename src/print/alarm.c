@@ -1,5 +1,5 @@
 #include "../h/term.h"
-void print_alarm (int alarm_error) {
+extern void print_alarm (int alarm_error) {
 	gotoxy(2,12);
 	if (alarm_error) {
 		set_display_atrib(BRIGHT);
